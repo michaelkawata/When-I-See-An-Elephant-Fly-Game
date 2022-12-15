@@ -4,28 +4,38 @@
 }
 
 #game {
-    width: 500px;
-    height: 600px;
+    width: 400px;
+    height: 500px;
     border: 2px solid blue;
     margin: auto;
     overflow: hidden;
 }
 
-#blocks {
+#block {
     width: 50px;
-    height: 600px;
+    height: 500px;
     background-color: blue;
     position: relative;
-    left: 500px;
-    animation: blocks 2s infinite linear;
+    left: 400px;
+    animation: block 2s infinite linear;
 }
 
-@keyframes blocks {
+@keyframes block {
     0% {
-        left: 500px
+        left: 400px
     }
 
     100% {
         left: -50px
     }
+}
+
+#safezone {
+    width: 50px;
+    height: 150px;
+    background-color: red;
+    position: relative;
+    left: 400px;
+    top: -500px;
+    animation: block 2s infinite linear;
 }
