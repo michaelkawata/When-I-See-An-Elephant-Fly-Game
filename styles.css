@@ -1,8 +1,10 @@
+/* Changing browser default style */
 * {
     padding: 0;
     margin: 0;
 }
 
+/* Create game window */
 #game {
     width: 400px;
     height: 500px;
@@ -11,6 +13,7 @@
     overflow: hidden;
 }
 
+/* Creating block */
 #block {
     width: 50px;
     height: 500px;
@@ -20,6 +23,7 @@
     animation: block 2s infinite linear;
 }
 
+/* Block right to left animation */
 @keyframes block {
     0% {
         left: 400px
@@ -30,12 +34,23 @@
     }
 }
 
+/* Creating safe zone in block */
 #safezone {
     width: 50px;
     height: 150px;
-    background-color: red;
+    background-color: white;
     position: relative;
     left: 400px;
     top: -500px;
     animation: block 2s infinite linear;
+}
+
+/* Create character */
+#character {
+    width: 20px;
+    height: 20px;
+    background-color: orange;
+    position: absolute;
+    top: 100px;
+    border-radius: 50%;
 }
