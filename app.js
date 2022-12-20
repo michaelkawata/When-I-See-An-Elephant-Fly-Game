@@ -1,36 +1,98 @@
 const block = document.getElementById("block");
-const safezone = document.getElementById("safezone");
+const hole = document.getElementById("hole");
 const character = document.getElementById("character");
-const jumping = 0;
+let jumping = 0;
+let counter = 0;
 
-// Randomize safe zones
-safezone.addEventListener('animationiteration', () => {
-    const random = -((Math.random() * 300) + 150);
-    safezone.style.top = random + "px";
-});
+const game = document.getElementById("game");
 
-// Create Gravity
-setInterval(() => {
-    const topOfCharacter = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
-    if (jumping == 0) {
-        character.style.top = (topOfCharacter + 3) + "px";
+let counterElement = document.createElement("div");
+game.appendChild(counterElement)
+
+let start = document.createElement("button");
+start.textContent = "Start";
+start.classList.add("start");
+
+start.addEventListener("click", () => {
+    play()
+})
+
+game.appendChild(start)
+
+let gameOver = document.createElement("div");
+game.appendChild(gameOver);
+
+const play = () => {
+    console.log("play")
+    gameOver.textContent = ""
+    counterElement.textContent = `0`
+    block.classList.add("block-animation")
+    hole.classList.add("block-animation")
+
+    // Randomize safe zones
+    const randomHole = () => {
+        let random = -((Math.random() * 300) + 150);
+        hole.style.top = random + "px";
+        counter++;
+        counterElement.textContent = `${counter}`
     }
-}, 10);
+    hole.addEventListener('animationiteration', randomHole);
 
-// Create jump function
-const jump = () => {
-    jumping = 1;
-    const jumpCount = 0;
-    const jumpInterval = setInterval(() => {
-        const topOfCharacter = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
-        if ((topOfCharacter > 6) && (jumpCount < 15)) {
-            character.style.top = (topOfCharacter - 5) + "px";
+    // Create gravity
+    let gravityInterval;
+    gravityInterval = setInterval(function () {
+        let characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
+        if (jumping == 0) {
+            character.style.top = (characterTop + 3) + "px";
         }
-        if (jumpCount > 20) {
-            clearInterval(jumpInterval);
-            jumping = 0;
-            jumpCount = 0;
-        }
-        jumpCount++;
     }, 10)
+
+    // Create hit detection
+    let hitInterval;
+    hitInterval = setInterval(function () {
+        let characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
+        let blockLeft = parseInt(window.getComputedStyle(block).getPropertyValue("left"));
+        let holeTop = parseInt(window.getComputedStyle(hole).getPropertyValue("top"));
+        let cTop = -(500 - characterTop);
+        if ((characterTop > 480) || ((blockLeft < 20) && (blockLeft > -50) && ((cTop < holeTop) || (cTop > holeTop + 130)))) {
+            gameOver.textContent = `Game Over - Score: ${counter - 1}`
+            character.style.top = 100 + "px";
+            counter = 0;
+            clearInterval(gravityInterval)
+            clearInterval(hitInterval)
+            // stopping block animation
+            block.classList.remove("block-animation")
+            hole.classList.remove("block-animation")
+            hole.removeEventListener('animationiteration', randomHole)
+        }
+    }, 10);
+
+    // Create jump function
+    function jump() {
+        jumping = 1;
+        let jumpCount = 0;
+        let jumpInterval = setInterval(function () {
+            let characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
+            if ((characterTop > 6) && (jumpCount < 15)) {
+                character.style.top = (characterTop - 5) + "px";
+            }
+            if (jumpCount > 20) {
+                clearInterval(jumpInterval);
+                jumping = 0;
+                jumpCount = 0;
+            }
+            jumpCount++;
+        }, 10);
+    }
+
+    document.onkeydown = checkKey;
+
+    function checkKey(e) {
+
+        e = e || window.event;
+
+        if (e.keyCode == '38') {
+            jump()
+        }
+    }
 }
