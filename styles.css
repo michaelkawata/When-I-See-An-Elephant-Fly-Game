@@ -5,9 +5,16 @@
 }
 
 .start {
+    width: 80px;
+    height: 40px;
+    background-color: rgb(56, 249, 56);
+    font-family: 'Roboto', serif;
+    color: white;
+    border-radius: 10px;
     position: absolute;
     top: 225px;
     left: 50%;
+    font-size: 20px;
     transform: translateX(-50%);
 }
 
@@ -26,6 +33,17 @@
     transform: translateX(-50%);
 }
 
+/* animate background */
+@keyframes animate-background {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 1000% 0;
+    }
+}
+
 /* Create game window */
 #game {
     background-image: url(assets/sky.png);
@@ -35,6 +53,7 @@
     margin: auto;
     position: relative;
     overflow: hidden;
+    animation: animate-background 20s linear infinite;
 }
 
 /* Creating block */

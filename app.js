@@ -13,7 +13,7 @@ counterElement.classList.add("counter-element");
 
 // Create start button
 let start = document.createElement("button");
-start.textContent = "Start";
+start.textContent = "START";
 start.classList.add("start");
 start.addEventListener("click", () => {
     play()
@@ -88,7 +88,7 @@ const play = () => {
         let holeTop = parseInt(window.getComputedStyle(hole).getPropertyValue("top"));
         let cTop = -(500 - characterTop);
         if ((characterTop > 480) || ((blockLeft < 20) && (blockLeft > -50) && ((cTop < holeTop) || (cTop > holeTop + 130)))) {
-            gameOver.textContent = `Game Over - Score: ${counter - 1}`
+            gameOver.textContent = `Game Over - Score: ${counter}`
             character.style.top = 100 + "px";
             counter = 0;
             clearInterval(gravityInterval)
