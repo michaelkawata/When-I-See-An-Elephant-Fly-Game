@@ -4,7 +4,27 @@
     margin: 0;
 }
 
-.start {}
+.start {
+    position: absolute;
+    top: 225px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.counter-element {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    font-size: 50px;
+    transform: translateX(-50%);
+}
+
+.game-over {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
 
 /* Create game window */
 #game {
@@ -13,7 +33,8 @@
     height: 500px;
     border: 2px solid blue;
     margin: auto;
-    /* overflow: hidden; */
+    position: relative;
+    overflow: hidden;
 }
 
 /* Creating block */
