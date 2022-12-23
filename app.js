@@ -1,6 +1,10 @@
 const block = document.getElementById("block");
 const hole = document.getElementById("hole");
 const character = document.getElementById("character");
+const music = new Audio('assets/DisneysDumbo-WhenISeeAnElephantFly.mp3');
+music.loop = true;
+const flap = new Audio('assets/FlapSoundEffect.mp3');
+flap.volume = 0.3;
 let jumping = 0;
 let counter = 0;
 
@@ -26,14 +30,19 @@ game.appendChild(gameOver);
 gameOver.classList.add("game-over");
 
 const play = () => {
+    music.play()
     console.log("play")
     gameOver.textContent = ""
     counterElement.textContent = `0`
     block.classList.add("block-animation")
     hole.classList.add("block-animation")
+    start.style.visibility = "hidden";
 
     // Create jump function
     function jump() {
+        flap.pause();
+        flap.currentTime = 0;
+        flap.play();
         jumping = 1;
         let jumpCount = 0;
         let jumpInterval = setInterval(function () {
@@ -47,7 +56,7 @@ const play = () => {
                 jumpCount = 0;
             }
             jumpCount++;
-        }, 10);
+        }, 12);
     }
 
     // click function
@@ -89,6 +98,8 @@ const play = () => {
         let cTop = -(500 - characterTop);
         if ((characterTop > 480) || ((blockLeft < 20) && (blockLeft > -50) && ((cTop < holeTop) || (cTop > holeTop + 130)))) {
             gameOver.textContent = `Game Over - Score: ${counter}`
+            music.pause();
+            music.currentTime = 0;
             character.style.top = 100 + "px";
             counter = 0;
             clearInterval(gravityInterval)
@@ -97,6 +108,7 @@ const play = () => {
             block.classList.remove("block-animation")
             hole.classList.remove("block-animation")
             hole.removeEventListener('animationiteration', randomHole)
+            start.style.visibility = "visible";
         }
     }, 10);
 }

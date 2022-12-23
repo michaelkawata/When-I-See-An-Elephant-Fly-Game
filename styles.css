@@ -19,16 +19,18 @@
 }
 
 .counter-element {
+    font-family: 'Fredoka One';
     position: absolute;
     top: 40px;
     left: 50%;
-    font-size: 50px;
+    font-size: 70px;
     transform: translateX(-50%);
 }
 
 .game-over {
+    font-family: 'Fredoka One';
     position: absolute;
-    top: 0;
+    top: 200px;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -46,14 +48,15 @@
 
 /* Create game window */
 #game {
-    background-image: url(assets/sky.png);
+    background-image: url(assets/sky5.jpg);
+    background-size: 800px 485px;
     width: 400px;
     height: 500px;
     border: 2px solid blue;
     margin: auto;
     position: relative;
     overflow: hidden;
-    animation: animate-background 20s linear infinite;
+    animation: animate-background 80s linear infinite;
 }
 
 /* Creating block */
