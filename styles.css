@@ -16,6 +16,7 @@
     left: 50%;
     font-size: 20px;
     transform: translateX(-50%);
+    z-index: 1;
 }
 
 .counter-element {
@@ -27,12 +28,34 @@
     transform: translateX(-50%);
 }
 
+.high-score {
+    font-family: 'Roboto', serif;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    font-size: 20px;
+    transform: translateX(-50%);
+}
+
 .game-over {
+    text-align: center;
     font-family: 'Fredoka One';
     position: absolute;
     top: 200px;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.gameover-dumbo {
+    position: relative;
+    top: 75px;
+    width: 300px;
+    height: 175px;
 }
 
 /* animate background */
