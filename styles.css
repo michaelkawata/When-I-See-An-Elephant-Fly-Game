@@ -4,6 +4,7 @@
     margin: 0;
 }
 
+/* Start button style */
 .start {
     width: 80px;
     height: 40px;
@@ -19,6 +20,7 @@
     z-index: 1;
 }
 
+/* Counter element style */
 .counter-element {
     font-family: 'Fredoka One';
     position: absolute;
@@ -28,6 +30,7 @@
     transform: translateX(-50%);
 }
 
+/* High score style */
 .high-score {
     font-family: 'Roboto', serif;
     position: absolute;
@@ -37,6 +40,7 @@
     transform: translateX(-50%);
 }
 
+/* Game over text style */
 .game-over {
     text-align: center;
     font-family: 'Fredoka One';
@@ -47,10 +51,12 @@
     z-index: 0;
 }
 
+/* Hidden end game image */
 .hidden {
     display: none;
 }
 
+/* End game image style */
 .gameover-dumbo {
     position: relative;
     top: 75px;
