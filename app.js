@@ -18,11 +18,11 @@ counterElement.classList.add("counter-element");
 // Highest score local storage
 let highScore = localStorage.getItem('Highest Score')
 if (!highScore) {
-    highScore = 0;
+    localStorage.setItem('Highest Score', 0);
 }
 
 let highestScoreLocal = document.createElement("div");
-highestScoreLocal.textContent = `High Score: ${highScore}`;
+highestScoreLocal.textContent = `High Score: ${localStorage.getItem('Highest Score')}`;
 highestScoreLocal.classList.add("high-score");
 game.appendChild(highestScoreLocal);
 
