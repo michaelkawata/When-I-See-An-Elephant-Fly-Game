@@ -1,4 +1,6 @@
 # When-I-See-An-Elephant-Fly
+My own personal take on the famous/infamous game Flappy Bird
+This was my first big project using vanilla Javascript
 
 How to play:
 
